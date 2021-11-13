@@ -16,15 +16,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Iey-T9-YFu">
-                                <rect key="frame" x="11" y="154" width="383" height="280"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Iey-T9-YFu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="666"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="684" id="yHq-0r-dYi"/>
+                                </constraints>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-0y-rZg">
+                                <rect key="frame" x="127" y="680" width="161" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="42l-OG-uln"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-FC-fgz">
+                                <rect key="frame" x="127" y="743" width="161" height="47"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asm-nZ-c6I">
+                                <rect key="frame" x="126" y="806" width="161" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="Vc5-bE-uB6"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button3"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Iey-T9-YFu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I0A-8P-yNW"/>
+                            <constraint firstItem="XLP-FC-fgz" firstAttribute="top" secondItem="vg8-0y-rZg" secondAttribute="bottom" constant="16" id="Mpb-AO-Zuv"/>
+                            <constraint firstItem="vg8-0y-rZg" firstAttribute="top" secondItem="Iey-T9-YFu" secondAttribute="bottom" constant="14" id="Or3-t7-4WO"/>
+                            <constraint firstItem="asm-nZ-c6I" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QUO-Oa-HBj"/>
+                            <constraint firstItem="vg8-0y-rZg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="emf-Kp-59l"/>
+                            <constraint firstItem="asm-nZ-c6I" firstAttribute="top" secondItem="XLP-FC-fgz" secondAttribute="bottom" constant="16" id="fk0-0D-D5Z"/>
+                            <constraint firstItem="XLP-FC-fgz" firstAttribute="width" secondItem="vg8-0y-rZg" secondAttribute="width" id="qnb-MZ-c2E"/>
+                            <constraint firstItem="Iey-T9-YFu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zip-Wn-ten"/>
+                            <constraint firstItem="XLP-FC-fgz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zmk-cW-YBr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Iey-T9-YFu" secondAttribute="trailing" id="zsu-MF-598"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="button1" destination="vg8-0y-rZg" id="Ozh-b1-fBO"/>
+                        <outlet property="button2" destination="XLP-FC-fgz" id="gwZ-C6-C1i"/>
+                        <outlet property="button3" destination="asm-nZ-c6I" id="Kf0-71-2Xb"/>
                         <outlet property="mapView" destination="Iey-T9-YFu" id="zQL-N2-xv9"/>
                         <outlet property="superView" destination="8bC-Xf-vdC" id="iFP-SJ-tuB"/>
                     </connections>
