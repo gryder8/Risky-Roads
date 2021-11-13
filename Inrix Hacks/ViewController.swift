@@ -13,7 +13,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: Oulets
     @IBOutlet weak var mapView: MKMapView! //mapKit view
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet var superView: UIView!
     
     
@@ -25,10 +24,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func setupMap() {
+        setupMapConstraints(mapView);
         let centerCoord:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.778, -122.441)
         let region = MKCoordinateRegion.init(center: centerCoord, latitudinalMeters: 9200, longitudinalMeters: 9200)
         mapView.setRegion(region, animated: true)
-        mapView
+    }
+    
+    func setupMapConstraints(_ mapView: MKMapView) {
+//        let bounds:UILayoutGuide = superView.safeAreaLayoutGuide
+//        mapView.leadingAnchor.constraint(equalTo: bounds.leadingAnchor).isActive = true
+//        mapView.bottomAnchor.constraint(equalTo: bounds.bottomAnchor).isActive = true
+//        mapView.topAnchor.constraint(equalTo: bounds.topAnchor).isActive = true
+//        mapView.trailingAnchor.constraint(equalTo: bounds.trailingAnchor).isActive = true
+        mapView.bounds = superView.bounds
     }
     
 
