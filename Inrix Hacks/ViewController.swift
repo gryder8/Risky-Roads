@@ -33,8 +33,7 @@ struct Risk: Codable {
     let total: Int
 }
 
-func fetchRisk(completion: @escaping (_ riskMap: RiskMap?, _ error: Error?)->())
-{
+func fetchRisk(completion: @escaping (_ riskMap: RiskMap?, _ error: Error?)->()) {
     let url = URL(string: "http://127.0.0.1:5000/" + "risk")!
     var request = URLRequest(url: url)
     let t = URLSession.shared.dataTask(with: request)
@@ -79,38 +78,41 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let rMap = RoutedMap(region: testRegion, riskScores: riskScores, routePoints: locations)
         
-        //button1.mapRoute = rMap
+        button1.mapRoute = rMap
         button2.mapRoute = rMap
         button3.mapRoute = rMap
         
-        button1.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
-        button2.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
-        button3.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
+//        button1.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
+//        button2.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
+//        button3.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
     }
     
     @objc func pressedButton(sender: Any) {
         let group = DispatchGroup()
             group.enter()
-
+            
             fetchRisk()
-        { riskMap, error in
+            { riskMap, error in
                     //print(self.convertRawRiskMapToRouted(riskMap!).routePoints)
                     self.button1.setMapRoute(self.convertRawRiskMapToRouted(riskMap!))
                     group.leave()
-                }
+            }
+        
             group.wait()
     }
     
     func convertRawRiskMapToRouted(_ riskMap: RiskMap) -> RoutedMap {
         let route = riskMap.routes.first
         let boundingBox: BoundingBox = route!.boundingBox
-        let center = CLLocationCoordinate2DMake(boundingBox.center[0], boundingBox.center[1])
-        let mapRegion = MKCoordinateRegion(center: center, latitudinalMeters: boundingBox.radius, longitudinalMeters: boundingBox.radius)
+        let center = CLLocationCoordinate2DMake(boundingBox.center[1], boundingBox.center[0])
+        print(boundingBox.radius)
+        let mapRegion = MKCoordinateRegion(center: center, latitudinalMeters: boundingBox.radius*1.5, longitudinalMeters: boundingBox.radius*1.5)
         
         var coords:[CLLocation] = []
         for point in route!.points {
-            coords.append(CLLocation(latitude: point[0], longitude: point[1]))
+            coords.append(CLLocation(latitude: point[1], longitude: point[0]))
         }
+        print(coords)
         
         let risk = route!.risk
         
@@ -121,17 +123,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "button1") {
+            pressedButton(sender: button1)
             (segue.destination as! SelectedView).mapWithRoute = button1.mapRoute
         } else if (segue.identifier == "button2") {
             (segue.destination as! SelectedView).mapWithRoute = button2.mapRoute
         } else if (segue.identifier == "button3") {
             (segue.destination as! SelectedView).mapWithRoute = button3.mapRoute
         }
-     }
-    
-
-    
-    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,8 +154,8 @@ class UIButtonWithRoutedMap: UIButton {
     var mapRoute: RoutedMap = RoutedMap()
     
     func setMapRoute(_ routedMap: RoutedMap) {
-        print("set!")
         mapRoute = routedMap
+        print("set!")
     }
 }
 
