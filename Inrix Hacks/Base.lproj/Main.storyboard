@@ -183,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a3c-xh-AUl">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="488"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="478"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DB-SH-gUI" userLabel=" Bottom View">
                                 <rect key="frame" x="0.0" y="450" width="414" height="392"/>
@@ -251,7 +251,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InE-oR-F5D">
-                                        <rect key="frame" x="131" y="86" width="73" height="21"/>
+                                        <rect key="frame" x="131" y="86" width="74" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -265,7 +265,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvW-We-x6m">
-                                        <rect key="frame" x="125" y="144" width="73" height="21"/>
+                                        <rect key="frame" x="125" y="144" width="74" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -299,7 +299,7 @@
                             <constraint firstItem="a3c-xh-AUl" firstAttribute="leading" secondItem="1DB-SH-gUI" secondAttribute="leading" id="6tJ-p8-BR4"/>
                             <constraint firstItem="a3c-xh-AUl" firstAttribute="leading" secondItem="r6a-Uc-Ok5" secondAttribute="leading" id="SH1-U9-6BM"/>
                             <constraint firstItem="a3c-xh-AUl" firstAttribute="centerX" secondItem="Ghq-g1-scX" secondAttribute="centerX" id="VDO-a0-Xld"/>
-                            <constraint firstItem="Ghq-g1-scX" firstAttribute="bottom" secondItem="a3c-xh-AUl" secondAttribute="bottom" constant="320" id="dSY-ds-mQe"/>
+                            <constraint firstItem="Ghq-g1-scX" firstAttribute="bottom" secondItem="a3c-xh-AUl" secondAttribute="bottom" constant="330" id="dSY-ds-mQe"/>
                             <constraint firstItem="a3c-xh-AUl" firstAttribute="top" secondItem="Ghq-g1-scX" secondAttribute="top" id="kiD-we-tpn"/>
                             <constraint firstItem="1DB-SH-gUI" firstAttribute="bottom" secondItem="Ghq-g1-scX" secondAttribute="bottom" constant="34" id="svS-hc-cW7"/>
                         </constraints>
