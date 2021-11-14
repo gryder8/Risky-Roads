@@ -52,13 +52,14 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             mapView.setRegion(mapWithRoute.region, animated: true)
             mapView.isScrollEnabled = false
             createPolyLine(locations: mapWithRoute.routePoints)
-            mainRiskLabel.text = String(mapWithRoute.riskScores.first!)
+            mainRiskLabel.text = String(mapWithRoute.riskScores.total)
         }
 
         // Do any additional setup after loading the view.
     }
     
     func createPolyLine(locations: [CLLocation]){
+        //print(locations)
         addPolyLineToMap(locations: locations)
     }
     
