@@ -28,6 +28,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var speedSlider: CustomSlider!
     @IBOutlet weak var timeSlider: CustomSlider!
     
+    @IBOutlet weak var mainRiskSlider: CustomSlider!
     
     @IBOutlet weak var previousRouteButton: UIButton!
     @IBOutlet weak var nextRouteButton: UIButton!
@@ -89,10 +90,10 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     
     func updateRiskLabel(riskScore: Int) {
         mainRiskLabel.text = String(riskScore)
-        
+        mainRiskSlider.value = Float(riskScore)
         if (riskScore <= 40) {
-            mainRiskLabel.backgroundColor = #colorLiteral(red: 0.368627451, green: 0.9647058824, blue: 0.5294117647, alpha: 1)
-            mainRiskLabel.textColor = #colorLiteral(red: 0, green: 0.5647058824, blue: 0.1529411765, alpha: 1)
+            //mainRiskLabel.backgroundColor = #colorLiteral(red: 0.368627451, green: 0.9647058824, blue: 0.5294117647, alpha: 1)
+            //mainRiskLabel.textColor = #colorLiteral(red: 0, green: 0.5647058824, blue: 0.1529411765, alpha: 1)
         } else if (riskScore <= 70) {
             mainRiskLabel.backgroundColor = .yellow
         } else {
@@ -101,6 +102,12 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     }
     
     func updateRiskSliders(_ riskScores: Risk) {
+        incidentSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
+        slowdownsSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
+        speedSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
+        timeSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
+        weatherSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
+        
         incidentSlider.value = Float(riskScores.incidents)
         slowdownsSlider.value = Float(riskScores.slowdown)
         speedSlider.value = Float(riskScores.speed)

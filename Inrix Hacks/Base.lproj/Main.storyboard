@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="564"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YME-da-1uD" userLabel=" Bottom View">
-                                <rect key="frame" x="0.0" y="524" width="414" height="390"/>
+                                <rect key="frame" x="0.0" y="464" width="414" height="450"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="button1" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-0y-rZg" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
                                         <rect key="frame" x="69" y="120" width="340" height="66"/>
@@ -92,7 +92,7 @@
                                         <rect key="frame" x="76" y="188.5" width="333" height="62.5"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Coit Tower to USF" subtitle="4.3 Miles">
+                                        <buttonConfiguration key="configuration" style="plain" title="Coit Tower to University of San Francisco" subtitle="4.3 Miles">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <fontDescription key="subtitleFontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         </buttonConfiguration>
@@ -151,7 +151,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Iey-T9-YFu" secondAttribute="bottom" constant="298" id="4Lc-ku-wXf"/>
-                            <constraint firstItem="YME-da-1uD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="480" id="9rg-8j-jjj"/>
+                            <constraint firstItem="YME-da-1uD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="420" id="9rg-8j-jjj"/>
                             <constraint firstItem="Iey-T9-YFu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I0A-8P-yNW"/>
                             <constraint firstItem="Iey-T9-YFu" firstAttribute="leading" secondItem="YME-da-1uD" secondAttribute="leading" id="Iw2-U9-TLJ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="YME-da-1uD" secondAttribute="bottom" constant="-52" id="ids-Uv-4xZ"/>
@@ -188,18 +188,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DB-SH-gUI" userLabel=" Bottom View">
                                 <rect key="frame" x="0.0" y="450" width="414" height="392"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Risk: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8t-r1-lUf">
-                                        <rect key="frame" x="50" y="33" width="89" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Risk " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8t-r1-lUf">
+                                        <rect key="frame" x="50" y="36" width="89" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRD-Ih-fsg">
-                                        <rect key="frame" x="139" y="26" width="86" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.67202650177784351" green="0.90878739320870605" blue="0.64553686945054389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -300,6 +292,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-hf-iZF" customClass="CustomSlider" customModule="Inrix_Hacks" customModuleProvider="target">
+                                        <rect key="frame" x="210" y="33" width="151" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="minimumTrackTintColor" systemColor="systemPinkColor"/>
+                                        <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                                <real key="value" value="23"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Zo7-qp-4h0" customClass="CustomSlider" customModule="Inrix_Hacks" customModuleProvider="target">
                                         <rect key="frame" x="237" y="125" width="124" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -344,6 +347,14 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRD-Ih-fsg">
+                                        <rect key="frame" x="117" y="29" width="86" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -369,6 +380,7 @@
                         <outlet property="incidentRiskLabel" destination="InE-oR-F5D" id="gRY-fP-E5Q"/>
                         <outlet property="incidentSlider" destination="vEi-Rj-nQ8" id="HLi-0g-kQ8"/>
                         <outlet property="mainRiskLabel" destination="WRD-Ih-fsg" id="WBS-vX-Fs1"/>
+                        <outlet property="mainRiskSlider" destination="P5I-hf-iZF" id="WNX-sw-7HL"/>
                         <outlet property="mapView" destination="a3c-xh-AUl" id="odB-4c-pp8"/>
                         <outlet property="nextRouteButton" destination="0Iy-dW-IDX" id="ZKf-Ol-SdV"/>
                         <outlet property="previousRouteButton" destination="qbf-AP-sXE" id="Jmp-sT-9l8"/>
@@ -389,6 +401,9 @@
     </scenes>
     <designables>
         <designable name="CKa-TB-072">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
+        </designable>
+        <designable name="P5I-hf-iZF">
             <size key="intrinsicContentSize" width="-1" height="30"/>
         </designable>
         <designable name="ZW6-l5-cYe">
@@ -420,6 +435,9 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
