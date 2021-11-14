@@ -16,11 +16,19 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainRiskLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var incidentRiskLabel: UILabel!
+    @IBOutlet weak var slowdownsRiskLabel: UILabel!
+    @IBOutlet weak var weatherRiskLabel: UILabel!
+    @IBOutlet weak var speedRiskLabel: UILabel!
+    @IBOutlet weak var timeRiskLabel: UILabel!
+    
+    
+    
     @IBOutlet weak var previousRouteButton: UIButton!
     @IBOutlet weak var nextRouteButton: UIButton!
     
-    public var mapWithRoute: RoutedMap = RoutedMap() //starts as empty!
-    
+    public var mapWithRoutes: [RoutedMap] = [] //starts as empty!
+    public var routeIndex = 0
     
     func addCloseButton() {
         let closeBtn = UIButton(type: .close)
@@ -46,24 +54,49 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         mapView.delegate = self
         addCloseButton()
         
-        if(mapWithRoute.routePoints != RoutedMap().routePoints) {
-            print(mapWithRoute.region)
-            mapView.setRegion(mapView.regionThatFits(mapWithRoute.region), animated: true)
+        if(mapWithRoutes[routeIndex].routePoints != RoutedMap().routePoints) {
+            print(mapWithRoutes[routeIndex].region)
+            mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
             print("region set!")
             mapView.isScrollEnabled = false
-            createPolyLine(locations: mapWithRoute.routePoints)
+            createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
             mainRiskLabel.layer.masksToBounds = true
             mainRiskLabel.layer.cornerRadius = 10
-            mainRiskLabel.text = String(mapWithRoute.riskScores.total)
+            mainRiskLabel.text = String(mapWithRoutes[routeIndex].riskScores.total)
             bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             bottomView.layer.cornerRadius = 25
+            setupButtons()
         }
-
+        
+        updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+            
         // Do any additional setup after loading the view.
+    }
+    
+    func updateRiskLabel(riskScore: Int) {
+        mainRiskLabel.text = String(riskScore)
+        
+        if (riskScore <= 40) {
+            mainRiskLabel.backgroundColor = .green
+        } else if (riskScore <= 70) {
+            mainRiskLabel.backgroundColor = .yellow
+        } else {
+            mainRiskLabel.backgroundColor = .red
+        }
+    }
+    
+    func updateRiskSubLabels(riskScores: Risk) {
+        incidentRiskLabel.text = String(riskScores.incidents)
+        slowdownsRiskLabel.text = String(riskScores.slowdown)
+        speedRiskLabel.text = String(riskScores.speed)
+        timeRiskLabel.text = String(riskScores.time)
+        weatherRiskLabel.text = String(riskScores.weather)
     }
     
     func createPolyLine(locations: [CLLocation]){
@@ -91,6 +124,46 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         }
 
         return MKOverlayRenderer()
+    }
+    
+    func setupButtons() {
+        nextRouteButton.addTarget(self, action: #selector(nextRoute), for: .touchUpInside)
+        previousRouteButton.addTarget(self, action: #selector(prevRoute), for: .touchUpInside)
+        previousRouteButton.isEnabled = false
+    }
+    
+    @objc func nextRoute() {
+        clearOverlay()
+        previousRouteButton.isEnabled = true
+        routeIndex += 1
+        updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+        mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
+        createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
+        if routeIndex == mapWithRoutes.count - 1 {
+            nextRouteButton.isEnabled = false
+        }
+    }
+    
+    @objc func prevRoute() {
+        clearOverlay()
+        nextRouteButton.isEnabled = true
+        routeIndex -= 1
+        updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+        mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
+        createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
+        if routeIndex == 0 {
+            previousRouteButton.isEnabled = false
+        }
+    }
+    
+    func clearOverlay() {
+        self.mapView.overlays.forEach {
+                if ($0 is MKPolyline) {
+                    self.mapView.removeOverlay($0)
+                }
+            }
     }
 
 }

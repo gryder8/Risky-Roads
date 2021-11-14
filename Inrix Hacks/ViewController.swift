@@ -86,16 +86,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     
     func setupButtons() {
-        testRegion = mapView.region
+//        testRegion = mapView.region
+//
+//        let rMap = RoutedMap(region: testRegion, riskScores: riskScores, routePoints: locations[0])
+//
         
-        let rMap = RoutedMap(region: testRegion, riskScores: riskScores, routePoints: locations[0])
         
         
-        
-        
-        button1.mapRoute = rMap
-        button2.mapRoute = rMap
-        button3.mapRoute = rMap
+//        button1.mapRoute = rMap
+//        button2.mapRoute = rMap
+//        button3.mapRoute = rMap
         
 //        button1.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
 //        button2.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
@@ -109,41 +109,44 @@ class ViewController: UIViewController, MKMapViewDelegate {
             fetchRisk()
             { riskMap, error in
                     //print(self.convertRawRiskMapToRouted(riskMap!).routePoints)
-                    self.button1.setMapRoute(self.convertRawRiskMapToRouted(riskMap!))
+                    self.button1.setMapRoutes(self.convertRawRiskMapToRouted(riskMap!))
                     group.leave()
             }
         
             group.wait()
     }
     
-    func convertRawRiskMapToRouted(_ riskMap: RiskMap) -> RoutedMap {
-        let route = riskMap.routes.first
-        let boundingBox: BoundingBox = route!.boundingBox
-        let center = CLLocationCoordinate2DMake(boundingBox.center[1], boundingBox.center[0])
-        print(boundingBox.radius)
-        let mapRegion = MKCoordinateRegion(center: center, latitudinalMeters: boundingBox.radius*2, longitudinalMeters: boundingBox.radius*2)
+    func convertRawRiskMapToRouted(_ riskMap: RiskMap) -> [RoutedMap] {
+        var routedMaps: [RoutedMap] = []
         
-        var coords:[CLLocation] = []
-        for point in route!.points {
-            coords.append(CLLocation(latitude: point[1], longitude: point[0]))
+        for route in riskMap.routes {
+            let boundingBox: BoundingBox = route.boundingBox
+            let center = CLLocationCoordinate2DMake(boundingBox.center[1], boundingBox.center[0])
+            print(boundingBox.radius)
+            let mapRegion = MKCoordinateRegion(center: center, latitudinalMeters: boundingBox.radius*2, longitudinalMeters: boundingBox.radius*2)
+            
+            var coords:[CLLocation] = []
+            for point in route.points {
+                coords.append(CLLocation(latitude: point[1], longitude: point[0]))
+            }
+            print(coords)
+            
+            let risk = route.risk
+            
+            routedMaps.append(RoutedMap(region: mapRegion, riskScores: risk, routePoints: coords))
         }
-        print(coords)
         
-        let risk = route!.risk
-        
-        let routedMap:RoutedMap = RoutedMap(region: mapRegion, riskScores: risk, routePoints: coords)
-        
-        return routedMap
+        return routedMaps
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "button1") {
             pressedButton(sender: button1)
-            (segue.destination as! SelectedView).mapWithRoute = button1.mapRoute
+            (segue.destination as! SelectedView).mapWithRoutes = button1.mapRoutes
         } else if (segue.identifier == "button2") {
-            (segue.destination as! SelectedView).mapWithRoute = button2.mapRoute
+            (segue.destination as! SelectedView).mapWithRoutes = button2.mapRoutes
         } else if (segue.identifier == "button3") {
-            (segue.destination as! SelectedView).mapWithRoute = button3.mapRoute
+            (segue.destination as! SelectedView).mapWithRoutes = button3.mapRoutes
         }
     }
     
@@ -173,10 +176,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
 }
 
 class UIButtonWithRoutedMap: UIButton {
-    var mapRoute: RoutedMap = RoutedMap()
+    var mapRoutes: [RoutedMap] = []
     
-    func setMapRoute(_ routedMap: RoutedMap) {
-        mapRoute = routedMap
+    func setMapRoutes(_ routedMaps: [RoutedMap]) {
+        mapRoutes = routedMaps
         print("set!")
     }
 }
