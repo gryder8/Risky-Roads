@@ -121,7 +121,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let boundingBox: BoundingBox = route!.boundingBox
         let center = CLLocationCoordinate2DMake(boundingBox.center[1], boundingBox.center[0])
         print(boundingBox.radius)
-        let mapRegion = MKCoordinateRegion(center: center, latitudinalMeters: boundingBox.radius*1.5, longitudinalMeters: boundingBox.radius*1.5)
+        let mapRegion = MKCoordinateRegion(center: center, latitudinalMeters: boundingBox.radius*2, longitudinalMeters: boundingBox.radius*2)
         
         var coords:[CLLocation] = []
         for point in route!.points {
