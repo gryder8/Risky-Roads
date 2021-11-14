@@ -22,26 +22,35 @@
                                     <constraint firstAttribute="height" constant="684" id="yHq-0r-dYi"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-0y-rZg">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-0y-rZg" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
                                 <rect key="frame" x="127" y="680" width="161" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="42l-OG-uln"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button1"/>
+                                <connections>
+                                    <segue destination="TpI-px-FvF" kind="presentation" identifier="button1" id="Cak-Hr-K4Q"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-FC-fgz">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-FC-fgz" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
                                 <rect key="frame" x="127" y="743" width="161" height="47"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button2"/>
+                                <connections>
+                                    <segue destination="TpI-px-FvF" kind="presentation" identifier="button2" id="boX-5V-Luu"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asm-nZ-c6I">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asm-nZ-c6I" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
                                 <rect key="frame" x="126" y="806" width="161" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="Vc5-bE-uB6"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button3"/>
+                                <connections>
+                                    <segue destination="TpI-px-FvF" kind="presentation" identifier="button3" id="lnf-82-6mF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -71,10 +80,69 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="82.366071428571431"/>
         </scene>
+        <!--Selected View-->
+        <scene sceneID="ujX-nW-BNG">
+            <objects>
+                <viewController id="TpI-px-FvF" customClass="SelectedView" customModule="Inrix_Hacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r6a-Uc-Ok5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a3c-xh-AUl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="666"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="666" id="aQE-SZ-y0f"/>
+                                </constraints>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7Z-rG-VMn">
+                                <rect key="frame" x="20" y="674" width="374" height="134"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Risk Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUa-Yq-Cxk">
+                                        <rect key="frame" x="93" y="41.5" width="188" height="51"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="tintColor"/>
+                                <constraints>
+                                    <constraint firstItem="qUa-Yq-Cxk" firstAttribute="centerX" secondItem="A7Z-rG-VMn" secondAttribute="centerX" id="ZR9-Xs-oA1"/>
+                                    <constraint firstItem="qUa-Yq-Cxk" firstAttribute="centerY" secondItem="A7Z-rG-VMn" secondAttribute="centerY" id="l84-Zr-NRf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ghq-g1-scX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ghq-g1-scX" firstAttribute="trailing" secondItem="A7Z-rG-VMn" secondAttribute="trailing" constant="20" id="3rc-wC-3ln"/>
+                            <constraint firstItem="A7Z-rG-VMn" firstAttribute="leading" secondItem="Ghq-g1-scX" secondAttribute="leading" constant="20" id="CMe-zT-JB6"/>
+                            <constraint firstItem="a3c-xh-AUl" firstAttribute="top" secondItem="r6a-Uc-Ok5" secondAttribute="top" id="Hnx-wV-rfY"/>
+                            <constraint firstItem="A7Z-rG-VMn" firstAttribute="top" secondItem="a3c-xh-AUl" secondAttribute="bottom" constant="8" symbolic="YES" id="LAW-9j-loF"/>
+                            <constraint firstItem="Ghq-g1-scX" firstAttribute="bottom" secondItem="A7Z-rG-VMn" secondAttribute="bottom" id="UWR-4V-Uip"/>
+                            <constraint firstItem="a3c-xh-AUl" firstAttribute="centerX" secondItem="A7Z-rG-VMn" secondAttribute="centerX" id="VXu-7G-w5y"/>
+                            <constraint firstItem="a3c-xh-AUl" firstAttribute="leading" secondItem="r6a-Uc-Ok5" secondAttribute="leading" id="mGt-Pe-iYX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rvg-6Y-Yfj"/>
+                    <connections>
+                        <outlet property="mapView" destination="a3c-xh-AUl" id="odB-4c-pp8"/>
+                        <outlet property="superView" destination="r6a-Uc-Ok5" id="J3r-R8-aDi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tVj-l0-9BW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="873.91304347826099" y="81.696428571428569"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lnf-82-6mF"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
