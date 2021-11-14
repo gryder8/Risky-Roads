@@ -42,7 +42,7 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
-                                        <buttonConfiguration key="configuration" style="plain" title="San Francisco to Park" subtitle="lorem ipsum">
+                                        <buttonConfiguration key="configuration" style="plain" title="Castro Theatre to Fishmerman's Wharf" subtitle="4.1 Miles">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <fontDescription key="subtitleFontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         </buttonConfiguration>
@@ -51,13 +51,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asm-nZ-c6I" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="265" width="333" height="61.5"/>
+                                        <rect key="frame" x="76" y="276" width="333" height="61.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Vc5-bE-uB6"/>
                                         </constraints>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Wharf to Restaurant" subtitle="lorem ipsum" titlePadding="0.0">
+                                        <buttonConfiguration key="configuration" style="plain" title="Oracle Park to Palace of Fine Arts" subtitle="4.8 Miles" titlePadding="0.0">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <fontDescription key="subtitleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         </buttonConfiguration>
@@ -89,10 +89,10 @@
                                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-FC-fgz" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="192.5" width="333" height="62.5"/>
+                                        <rect key="frame" x="76" y="203.5" width="333" height="62.5"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Park to Wharf" subtitle="subtitle">
+                                        <buttonConfiguration key="configuration" style="plain" title="Coit Tower to USF" subtitle="4.3 Miles">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <fontDescription key="subtitleFontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         </buttonConfiguration>
@@ -101,7 +101,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TxD-bp-paR">
-                                        <rect key="frame" x="31" y="132" width="40" height="39"/>
+                                        <rect key="frame" x="31" y="130" width="40" height="39"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="9PB-MR-sLt"/>
@@ -109,7 +109,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qpg-jV-g79">
-                                        <rect key="frame" x="31" y="204.5" width="40" height="39"/>
+                                        <rect key="frame" x="31" y="215.5" width="40" height="39"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Tt1-Xa-vrd"/>
@@ -117,7 +117,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="onE-cW-Mud">
-                                        <rect key="frame" x="31" y="276.5" width="40" height="39"/>
+                                        <rect key="frame" x="31" y="287.5" width="40" height="39"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="IOj-RO-1bN"/>
@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="trailing" secondItem="XLP-FC-fgz" secondAttribute="trailing" constant="5" id="GiI-pr-yyJ"/>
                                     <constraint firstItem="asm-nZ-c6I" firstAttribute="leading" secondItem="onE-cW-Mud" secondAttribute="trailing" constant="5" id="Hpv-iV-wMz"/>
                                     <constraint firstItem="vg8-0y-rZg" firstAttribute="leading" secondItem="TxD-bp-paR" secondAttribute="trailing" constant="5" id="IUh-oK-hZU"/>
-                                    <constraint firstItem="vg8-0y-rZg" firstAttribute="top" secondItem="DHn-pn-QQD" secondAttribute="bottom" constant="30" id="IZE-NJ-jnB"/>
+                                    <constraint firstItem="vg8-0y-rZg" firstAttribute="top" secondItem="DHn-pn-QQD" secondAttribute="bottom" constant="15" id="IZE-NJ-jnB"/>
                                     <constraint firstItem="DHn-pn-QQD" firstAttribute="centerX" secondItem="YME-da-1uD" secondAttribute="centerX" id="Lj3-3q-vxS"/>
                                     <constraint firstItem="TxD-bp-paR" firstAttribute="centerY" secondItem="vg8-0y-rZg" secondAttribute="centerY" id="Oo1-4I-cjY"/>
                                     <constraint firstAttribute="trailing" secondItem="asm-nZ-c6I" secondAttribute="trailing" constant="5" id="YqN-Uk-SOg"/>
