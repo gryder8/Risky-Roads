@@ -22,6 +22,11 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var speedRiskLabel: UILabel!
     @IBOutlet weak var timeRiskLabel: UILabel!
     
+    @IBOutlet weak var incidentSlider: CustomSlider!
+    @IBOutlet weak var slowdownsSlider: CustomSlider!
+    @IBOutlet weak var weatherSlider: CustomSlider!
+    @IBOutlet weak var speedSlider: CustomSlider!
+    @IBOutlet weak var timeSlider: CustomSlider!
     
     
     @IBOutlet weak var previousRouteButton: UIButton!
@@ -74,7 +79,10 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         }
         
         updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
-        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+        
+        updateRiskSubLabels( mapWithRoutes[routeIndex].riskScores)
+        
+        updateRiskSliders( mapWithRoutes[routeIndex].riskScores)
             
         // Do any additional setup after loading the view.
     }
@@ -83,7 +91,8 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         mainRiskLabel.text = String(riskScore)
         
         if (riskScore <= 40) {
-            mainRiskLabel.backgroundColor = .green
+            mainRiskLabel.backgroundColor = #colorLiteral(red: 0.368627451, green: 0.9647058824, blue: 0.5294117647, alpha: 1)
+            mainRiskLabel.textColor = #colorLiteral(red: 0, green: 0.5647058824, blue: 0.1529411765, alpha: 1)
         } else if (riskScore <= 70) {
             mainRiskLabel.backgroundColor = .yellow
         } else {
@@ -91,7 +100,15 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func updateRiskSubLabels(riskScores: Risk) {
+    func updateRiskSliders(_ riskScores: Risk) {
+        incidentSlider.value = Float(riskScores.incidents)
+        slowdownsSlider.value = Float(riskScores.slowdown)
+        speedSlider.value = Float(riskScores.speed)
+        timeSlider.value = Float(riskScores.time)
+        weatherSlider.value = Float(riskScores.weather)
+    }
+    
+    func updateRiskSubLabels(_ riskScores: Risk) {
         incidentRiskLabel.text = String(riskScores.incidents)
         slowdownsRiskLabel.text = String(riskScores.slowdown)
         speedRiskLabel.text = String(riskScores.speed)
@@ -140,7 +157,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         previousRouteButton.isEnabled = true
         routeIndex += 1
         updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
-        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+        updateRiskSubLabels(mapWithRoutes[routeIndex].riskScores)
         mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
         createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
         if routeIndex == mapWithRoutes.count - 1 {
@@ -153,7 +170,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         nextRouteButton.isEnabled = true
         routeIndex -= 1
         updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
-        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+        updateRiskSubLabels(mapWithRoutes[routeIndex].riskScores)
         mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
         createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
         if routeIndex == 0 {

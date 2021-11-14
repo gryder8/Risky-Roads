@@ -17,6 +17,7 @@
 		86548BB927408242002A8D57 /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86548BB827408242002A8D57 /* SelectedView.swift */; };
 		86548BBB274088AA002A8D57 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86548BBA274088AA002A8D57 /* Toast.swift */; };
 		86548BBD27408952002A8D57 /* RoutedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86548BBC27408952002A8D57 /* RoutedMap.swift */; };
+		86E62DD12741589400D089E2 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E62DD02741589400D089E2 /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		86548BB827408242002A8D57 /* SelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
 		86548BBA274088AA002A8D57 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		86548BBC27408952002A8D57 /* RoutedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutedMap.swift; sourceTree = "<group>"; };
+		86E62DD02741589400D089E2 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				86548BB827408242002A8D57 /* SelectedView.swift */,
 				86548BBC27408952002A8D57 /* RoutedMap.swift */,
 				86548BBA274088AA002A8D57 /* Toast.swift */,
+				86E62DD02741589400D089E2 /* CustomSlider.swift */,
 				86548BA227404CD3002A8D57 /* Main.storyboard */,
 				86548BA527404CD5002A8D57 /* Assets.xcassets */,
 				86548BA727404CD5002A8D57 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86548BA127404CD3002A8D57 /* ViewController.swift in Sources */,
+				86E62DD12741589400D089E2 /* CustomSlider.swift in Sources */,
 				86548BB927408242002A8D57 /* SelectedView.swift in Sources */,
 				86548BBB274088AA002A8D57 /* Toast.swift in Sources */,
 				86548B9D27404CD3002A8D57 /* AppDelegate.swift in Sources */,
