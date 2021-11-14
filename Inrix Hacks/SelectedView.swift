@@ -49,16 +49,18 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         addCloseButton()
         
         if(mapWithRoute.routePoints != RoutedMap().routePoints) {
-            mapView.setRegion(mapWithRoute.region, animated: true)
+            mapView.setRegion(mapView.regionThatFits(mapWithRoute.region), animated: true)
+            print("region set!")
             mapView.isScrollEnabled = false
             createPolyLine(locations: mapWithRoute.routePoints)
-            mainRiskLabel.text = String(mapWithRoute.riskScores.first!)
+            mainRiskLabel.text = String(mapWithRoute.riskScores.total)
         }
 
         // Do any additional setup after loading the view.
     }
     
     func createPolyLine(locations: [CLLocation]){
+        //print(locations)
         addPolyLineToMap(locations: locations)
     }
     
@@ -69,6 +71,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
 
             let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
             mapView.addOverlay(polyline)
+            print("drawn!")
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
