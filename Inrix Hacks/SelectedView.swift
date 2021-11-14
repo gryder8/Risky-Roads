@@ -18,9 +18,12 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var incidentRiskLabel: UILabel!
     @IBOutlet weak var slowdownsRiskLabel: UILabel!
+    @IBOutlet weak var weatherRiskLabel: UILabel!
     @IBOutlet weak var speedRiskLabel: UILabel!
     @IBOutlet weak var timeRiskLabel: UILabel!
-    @IBOutlet weak var weatherRiskLabel: UILabel!
+    
+    
+    
     @IBOutlet weak var previousRouteButton: UIButton!
     @IBOutlet weak var nextRouteButton: UIButton!
     
@@ -69,7 +72,10 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             bottomView.layer.cornerRadius = 25
             setupButtons()
         }
-            mainRiskLabel.text = String(mapWithRoutes[routeIndex].riskScores.total)
+        
+        updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
+            
         // Do any additional setup after loading the view.
     }
     
@@ -130,7 +136,8 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         clearOverlay()
         previousRouteButton.isEnabled = true
         routeIndex += 1
-        mainRiskLabel.text = String(mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
         mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
         createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
         if routeIndex == mapWithRoutes.count - 1 {
@@ -142,7 +149,8 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         clearOverlay()
         nextRouteButton.isEnabled = true
         routeIndex -= 1
-        mainRiskLabel.text = String(mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskLabel(riskScore: mapWithRoutes[routeIndex].riskScores.total)
+        updateRiskSubLabels(riskScores: mapWithRoutes[routeIndex].riskScores)
         mapView.setRegion(mapView.regionThatFits(mapWithRoutes[routeIndex].region), animated: true)
         createPolyLine(locations: mapWithRoutes[routeIndex].routePoints)
         if routeIndex == 0 {
