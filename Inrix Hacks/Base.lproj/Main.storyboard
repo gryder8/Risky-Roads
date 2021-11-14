@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YME-da-1uD" userLabel=" Bottom View">
                                 <rect key="frame" x="0.0" y="524" width="414" height="390"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-0y-rZg" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="button1" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-0y-rZg" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
                                         <rect key="frame" x="69" y="120" width="340" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="42l-OG-uln"/>
@@ -50,8 +50,8 @@
                                             <segue destination="TpI-px-FvF" kind="presentation" identifier="button1" id="Cak-Hr-K4Q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asm-nZ-c6I" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="276" width="333" height="61.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button3" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asm-nZ-c6I" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
+                                        <rect key="frame" x="76" y="261" width="333" height="61.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Vc5-bE-uB6"/>
                                         </constraints>
@@ -88,8 +88,8 @@
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-FC-fgz" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="203.5" width="333" height="62.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button2" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-FC-fgz" customClass="UIButtonWithRoutedMap" customModule="Inrix_Hacks" customModuleProvider="target">
+                                        <rect key="frame" x="76" y="188.5" width="333" height="62.5"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Coit Tower to USF" subtitle="4.3 Miles">
@@ -101,7 +101,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TxD-bp-paR">
-                                        <rect key="frame" x="31" y="130" width="40" height="39"/>
+                                        <rect key="frame" x="31" y="115" width="40" height="39"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="9PB-MR-sLt"/>
@@ -109,7 +109,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qpg-jV-g79">
-                                        <rect key="frame" x="31" y="215.5" width="40" height="39"/>
+                                        <rect key="frame" x="31" y="200.5" width="40" height="39"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Tt1-Xa-vrd"/>
@@ -117,7 +117,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="onE-cW-Mud">
-                                        <rect key="frame" x="31" y="287.5" width="40" height="39"/>
+                                        <rect key="frame" x="31" y="272.5" width="40" height="39"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="IOj-RO-1bN"/>
@@ -138,7 +138,7 @@
                                     <constraint firstItem="DHn-pn-QQD" firstAttribute="centerX" secondItem="YME-da-1uD" secondAttribute="centerX" id="Lj3-3q-vxS"/>
                                     <constraint firstItem="TxD-bp-paR" firstAttribute="centerY" secondItem="vg8-0y-rZg" secondAttribute="centerY" id="Oo1-4I-cjY"/>
                                     <constraint firstAttribute="trailing" secondItem="asm-nZ-c6I" secondAttribute="trailing" constant="5" id="YqN-Uk-SOg"/>
-                                    <constraint firstItem="DHn-pn-QQD" firstAttribute="top" secondItem="YME-da-1uD" secondAttribute="top" constant="40" id="fMU-zn-d2b"/>
+                                    <constraint firstItem="DHn-pn-QQD" firstAttribute="top" secondItem="YME-da-1uD" secondAttribute="top" constant="25" id="fMU-zn-d2b"/>
                                     <constraint firstAttribute="trailing" secondItem="vg8-0y-rZg" secondAttribute="trailing" constant="5" id="hFf-6Y-BEH"/>
                                     <constraint firstItem="asm-nZ-c6I" firstAttribute="top" secondItem="XLP-FC-fgz" secondAttribute="bottom" constant="10" id="qOQ-g2-4Eh"/>
                                     <constraint firstItem="onE-cW-Mud" firstAttribute="centerY" secondItem="asm-nZ-c6I" secondAttribute="centerY" id="stz-Vd-XYA"/>

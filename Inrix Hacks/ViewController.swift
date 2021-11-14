@@ -33,8 +33,8 @@ struct Risk: Codable {
     let total: Int
 }
 
-func fetchRisk(completion: @escaping (_ riskMap: RiskMap?, _ error: Error?)->()) {
-    let url = URL(string: "http://127.0.0.1:5000/" + "risk")!
+func fetchRisk(_ wp1: String, _ wp2: String, completion: @escaping (_ riskMap: RiskMap?, _ error: Error?)->()) {
+    let url = URL(string: "http://127.0.0.1:5000/" + "risk?wp1=" + wp1 + "&wp2=" + wp2)!
     let request = URLRequest(url: url)
     let t = URLSession.shared.dataTask(with: request)
     { data, response, error in
@@ -106,10 +106,31 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let group = DispatchGroup()
             group.enter()
             
-            fetchRisk()
+        var button = UIButtonWithRoutedMap()
+        
+        if(sender is UIButtonWithRoutedMap){
+            button = sender as! UIButtonWithRoutedMap
+        }
+        
+        let buttonID = button.restorationIdentifier
+        var wp1:String
+        var wp2:String
+        
+        if (buttonID == "button1") {
+            wp1 = "37.761982,-122.435150" //Castro Theatre
+            wp2 = "37.808418,-122.415836" //Fisherman's Wharf
+        } else if (buttonID == "button2") {
+            wp1 = "37.802728,-122.405810" //Coit Tower
+            wp2 = "37.777105,-122.450536" //USF
+        } else {
+            wp1 = "37.779119,-122.390310" //Oracle Park
+            wp2 = "37.804459,-122.4487209" //Palace of Fine Arts
+        }
+        
+            fetchRisk(wp1, wp2)
             { riskMap, error in
                     //print(self.convertRawRiskMapToRouted(riskMap!).routePoints)
-                    self.button1.setMapRoutes(self.convertRawRiskMapToRouted(riskMap!))
+                    button.setMapRoutes(self.convertRawRiskMapToRouted(riskMap!))
                     group.leave()
             }
         
@@ -141,11 +162,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "button1") {
-            pressedButton(sender: button1)
+            pressedButton(sender: button1!)
             (segue.destination as! SelectedView).mapWithRoutes = button1.mapRoutes
         } else if (segue.identifier == "button2") {
+            pressedButton(sender: button2!)
             (segue.destination as! SelectedView).mapWithRoutes = button2.mapRoutes
         } else if (segue.identifier == "button3") {
+            pressedButton(sender: button3!)
             (segue.destination as! SelectedView).mapWithRoutes = button3.mapRoutes
         }
     }
