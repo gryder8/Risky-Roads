@@ -19,27 +19,42 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView! //mapKit view
     @IBOutlet var superView: UIView!
     
+    @IBOutlet weak var whereToLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var button1: UIButtonWithRoutedMap!
     @IBOutlet weak var button2: UIButtonWithRoutedMap!
     @IBOutlet weak var button3: UIButtonWithRoutedMap!
     
     var testRegion = MKCoordinateRegion()
+    let geocoder = CLGeocoder()
     
     var riskScores = [10, 20, 30]
     
     var locations = [
-        CLLocation(latitude: 37.78073, longitude: -122.47236),
-        CLLocation(latitude: 37.78697, longitude: -122.41154),
-        CLLocation(latitude: 37.78758, longitude: -122.42360)         
-            ]
+        [
+            CLLocation(latitude: 37.78073, longitude: -122.47236),
+            CLLocation(latitude: 37.78697, longitude: -122.41154)
+        ],
+        [
+            CLLocation(latitude: 37.80073, longitude: -122.47236),
+            CLLocation(latitude: 37.80697, longitude: -122.41154)
+        ],
+        [
+            CLLocation(latitude: 37.75073, longitude: -122.47236),
+            CLLocation(latitude: 37.75069, longitude: -122.41154)
+        ]
     
+    ]
     
     
     
     func setupButtons() {
         testRegion = mapView.region
         
-        let rMap = RoutedMap(region: testRegion, riskScores: riskScores, routePoints: locations)
+        let rMap = RoutedMap(region: testRegion, riskScores: riskScores, routePoints: locations[0])
+        
+        
+        
         
         button1.mapRoute = rMap
         button2.mapRoute = rMap
@@ -80,6 +95,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
         setupMap()
         setupButtons()
+        whereToLabel.layer.masksToBounds = true
+        whereToLabel.layer.cornerRadius = 10
+        
+    
+        
+        bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        bottomView.layer.cornerRadius = 25
         //DispatchQueue.main.async {
         //}
     }

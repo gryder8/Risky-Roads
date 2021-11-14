@@ -12,9 +12,9 @@ import MapKit
 class SelectedView: UIViewController, MKMapViewDelegate {
     
     //MARK: Properties
-    @IBOutlet var superView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mainRiskLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
     
     
     public var mapWithRoute: RoutedMap = RoutedMap() //starts as empty!
@@ -52,7 +52,10 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             mapView.setRegion(mapWithRoute.region, animated: true)
             mapView.isScrollEnabled = false
             createPolyLine(locations: mapWithRoute.routePoints)
-            mainRiskLabel.text = String(mapWithRoute.riskScores.first!)
+            mainRiskLabel.layer.masksToBounds = true
+            mainRiskLabel.layer.cornerRadius = 10
+            bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            bottomView.layer.cornerRadius = 25
         }
 
         // Do any additional setup after loading the view.
