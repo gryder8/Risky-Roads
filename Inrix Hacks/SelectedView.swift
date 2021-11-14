@@ -48,9 +48,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     }
     
     @objc func closeView() {
-        //print("***CALLED***")
-        self.dismiss(animated: true, completion: nil) //this deallocates the VC so we need to set the delegate for the mapView to nil to avoid crashes on re-appearing
-        //mapView.isHidden = true
+        self.dismiss(animated: true, completion: nil) //this deallocates the VC so we need to set the delegate for the mapView to
     }
     
     deinit {
@@ -84,7 +82,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         updateRiskSubLabels( mapWithRoutes[routeIndex].riskScores)
         
         updateRiskSliders( mapWithRoutes[routeIndex].riskScores)
-            
+        
         // Do any additional setup after loading the view.
     }
     
@@ -131,24 +129,24 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     }
     
     func addPolyLineToMap(locations: [CLLocation]) {
-            var coordinates = locations.map({ (location: CLLocation!) -> CLLocationCoordinate2D in
-                return location.coordinate
-            })
-
-            let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
-            mapView.addOverlay(polyline)
-            print("drawn!")
+        var coordinates = locations.map({ (location: CLLocation!) -> CLLocationCoordinate2D in
+            return location.coordinate
+        })
+        
+        let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
+        mapView.addOverlay(polyline)
+        print("drawn!")
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-
+        
         if let routePolyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: routePolyline)
             renderer.strokeColor = UIColor.blue.withAlphaComponent(0.8)
             renderer.lineWidth = 5
             return renderer
         }
-
+        
         return MKOverlayRenderer()
     }
     
@@ -189,23 +187,10 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     
     func clearOverlay() {
         self.mapView.overlays.forEach {
-                if ($0 is MKPolyline) {
-                    self.mapView.removeOverlay($0)
-                }
+            if ($0 is MKPolyline) {
+                self.mapView.removeOverlay($0)
             }
+        }
     }
-
+    
 }
-
-//extension ViewController {
-//
-//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//        let renderer = MKPolylineRenderer(overlay: overlay)
-//        renderer.strokeColor = .systemIndigo
-//        renderer.lineCap = .round
-//        renderer.lineWidth = 10.0
-//
-//        return renderer
-//    }
-//
-//}

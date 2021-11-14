@@ -39,11 +39,11 @@ func fetchRisk(_ wp1: String, _ wp2: String, completion: @escaping (_ riskMap: R
     let t = URLSession.shared.dataTask(with: request)
     { data, response, error in
         guard let data = data,
-                  error == nil else
-        {
-            completion(nil, error)
-            return
-        }
+              error == nil else
+              {
+                  completion(nil, error)
+                  return
+              }
         let riskMap = try? JSONDecoder().decode(RiskMap.self, from: data)
         completion(riskMap, error)
     }
@@ -79,15 +79,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
             CLLocation(latitude: 37.75073, longitude: -122.47236),
             CLLocation(latitude: 37.75069, longitude: -122.41154)
         ]
-    
+        
     ]
     
     
     
     @objc func pressedButton(sender: Any) {
         let group = DispatchGroup()
-            group.enter()
-            
+        group.enter()
+        
         var button = UIButtonWithRoutedMap()
         
         if(sender is UIButtonWithRoutedMap){
@@ -108,14 +108,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
             wp1 = "37.779119,-122.390310" //Oracle Park
             wp2 = "37.804459,-122.4487209" //Palace of Fine Arts
         }
-            fetchRisk(wp1, wp2)
-            { riskMap, error in
-                    //print(self.convertRawRiskMapToRouted(riskMap!).routePoints)
-                    button.setMapRoutes(self.convertRawRiskMapToRouted(riskMap!))
-                    group.leave()
-            }
+        fetchRisk(wp1, wp2)
+        { riskMap, error in
+            //print(self.convertRawRiskMapToRouted(riskMap!).routePoints)
+            button.setMapRoutes(self.convertRawRiskMapToRouted(riskMap!))
+            group.leave()
+        }
         
-            group.wait()
+        group.wait()
     }
     
     func convertRawRiskMapToRouted(_ riskMap: RiskMap) -> [RoutedMap] {
@@ -165,7 +165,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         bottomView.layer.cornerRadius = 25
-
+        
     }
     
     func setupMap() {
