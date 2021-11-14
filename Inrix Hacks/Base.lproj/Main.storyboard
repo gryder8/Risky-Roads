@@ -224,7 +224,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rvg-6Y-Yfj"/>
                     <connections>
-                        <outlet property="bottomView" destination="1DB-SH-gUI" id="Cts-a5-j0G"/>
+                        <outlet property="bottomView" destination="1DB-SH-gUI" id="Wra-R7-Un4"/>
                         <outlet property="mainRiskLabel" destination="WRD-Ih-fsg" id="WBS-vX-Fs1"/>
                         <outlet property="mapView" destination="a3c-xh-AUl" id="odB-4c-pp8"/>
                     </connections>

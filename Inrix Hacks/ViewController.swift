@@ -35,7 +35,7 @@ struct Risk: Codable {
 
 func fetchRisk(completion: @escaping (_ riskMap: RiskMap?, _ error: Error?)->()) {
     let url = URL(string: "http://127.0.0.1:5000/" + "risk")!
-    var request = URLRequest(url: url)
+    let request = URLRequest(url: url)
     let t = URLSession.shared.dataTask(with: request)
     { data, response, error in
         guard let data = data,

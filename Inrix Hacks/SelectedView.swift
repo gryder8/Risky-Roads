@@ -14,6 +14,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     //MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mainRiskLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
     
     
     public var mapWithRoute: RoutedMap = RoutedMap() //starts as empty!
@@ -48,6 +49,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         addCloseButton()
         
         if(mapWithRoute.routePoints != RoutedMap().routePoints) {
+            print(mapWithRoute.region)
             mapView.setRegion(mapView.regionThatFits(mapWithRoute.region), animated: true)
             print("region set!")
             mapView.isScrollEnabled = false
