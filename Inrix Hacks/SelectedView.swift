@@ -102,17 +102,19 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     }
     
     func updateRiskSliders(_ riskScores: Risk) {
+        let dilation: Float = 3.0
+        
         incidentSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
         slowdownsSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
         speedSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
         timeSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
         weatherSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(0.8)
         
-        incidentSlider.value = Float(riskScores.incidents)
-        slowdownsSlider.value = Float(riskScores.slowdown)
-        speedSlider.value = Float(riskScores.speed)
-        timeSlider.value = Float(riskScores.time)
-        weatherSlider.value = Float(riskScores.weather)
+        incidentSlider.value = Float(riskScores.incidents) * dilation
+        slowdownsSlider.value = Float(riskScores.slowdown) * dilation
+        speedSlider.value = Float(riskScores.speed) * dilation
+        timeSlider.value = Float(riskScores.time) * dilation
+        weatherSlider.value = Float(riskScores.weather) * dilation
     }
     
     func updateRiskSubLabels(_ riskScores: Risk) {
