@@ -14,6 +14,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     //MARK: Properties
     @IBOutlet var superView: UIView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mainRiskLabel: UILabel!
     
     
     public var mapWithRoute: RoutedMap = RoutedMap() //starts as empty!
@@ -23,7 +24,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         let closeBtn = UIButton(type: .close)
         closeBtn.isEnabled = true
         closeBtn.tintColor = .blue
-        closeBtn.frame = CGRect(x: 30, y: 40, width: 35, height: 35)
+        closeBtn.frame = CGRect(x: 10, y: 20, width: 35, height: 35)
         closeBtn.addTarget(self, action: #selector(self.closeView), for: .touchUpInside)
         closeBtn.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         closeBtn.translatesAutoresizingMaskIntoConstraints = true
@@ -49,8 +50,9 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         
         if(mapWithRoute.routePoints != RoutedMap().routePoints) {
             mapView.setRegion(mapWithRoute.region, animated: true)
+            mapView.isScrollEnabled = false
             createPolyLine(locations: mapWithRoute.routePoints)
-            
+            mainRiskLabel.text = String(mapWithRoute.riskScores.first!)
         }
 
         // Do any additional setup after loading the view.
@@ -69,16 +71,29 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             mapView.addOverlay(polyline)
     }
     
-    private func mapView(mapView: MKMapView!, viewForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 
-            if (overlay is MKPolyline) {
-                let polylineRenderer = MKPolylineRenderer(overlay: overlay);
-                polylineRenderer.strokeColor = UIColor.red.withAlphaComponent(0.5);
-                polylineRenderer.lineWidth = 5;
-                return polylineRenderer;
-            }
-
-            return nil
+        if let routePolyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: routePolyline)
+            renderer.strokeColor = UIColor.blue.withAlphaComponent(0.8)
+            renderer.lineWidth = 5
+            return renderer
         }
 
+        return MKOverlayRenderer()
+    }
+
 }
+
+//extension ViewController {
+//
+//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//        let renderer = MKPolylineRenderer(overlay: overlay)
+//        renderer.strokeColor = .systemIndigo
+//        renderer.lineCap = .round
+//        renderer.lineWidth = 10.0
+//
+//        return renderer
+//    }
+//
+//}

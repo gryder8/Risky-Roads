@@ -28,9 +28,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var riskScores = [10, 20, 30]
     
     var locations = [
-        CLLocation(latitude: 37.77832, longitude: 122.438),
-        CLLocation(latitude: 37.77866, longitude: 122.42401),
-        CLLocation(latitude: 37.78758, longitude: 122.42360)         
+        CLLocation(latitude: 37.78073, longitude: -122.47236),
+        CLLocation(latitude: 37.78697, longitude: -122.41154),
+        CLLocation(latitude: 37.78758, longitude: -122.42360)         
             ]
     
     

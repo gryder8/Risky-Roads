@@ -125,6 +125,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rvg-6Y-Yfj"/>
                     <connections>
+                        <outlet property="mainRiskLabel" destination="qUa-Yq-Cxk" id="4YS-x7-rcI"/>
                         <outlet property="mapView" destination="a3c-xh-AUl" id="odB-4c-pp8"/>
                         <outlet property="superView" destination="r6a-Uc-Ok5" id="J3r-R8-aDi"/>
                     </connections>
