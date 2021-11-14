@@ -63,11 +63,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var button3: UIButtonWithRoutedMap!
     
     var testRegion = MKCoordinateRegion()
-    let geocoder = CLGeocoder()
     
-    var riskScores = Risk(incidents: 0, slowdown: 0, speed: 0, time: 0, weather: 0, total: 0)
+    var riskScores = Risk(incidents: 0, slowdown: 0, speed: 0, time: 0, weather: 0, total: 0) //init
     
-    var locations = [
+    var locations = [ //TESTING
         [
             CLLocation(latitude: 37.78073, longitude: -122.47236),
             CLLocation(latitude: 37.78697, longitude: -122.41154)
@@ -84,23 +83,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     ]
     
     
-    
-    func setupButtons() {
-//        testRegion = mapView.region
-//
-//        let rMap = RoutedMap(region: testRegion, riskScores: riskScores, routePoints: locations[0])
-//
-        
-        
-        
-//        button1.mapRoute = rMap
-//        button2.mapRoute = rMap
-//        button3.mapRoute = rMap
-        
-//        button1.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
-//        button2.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
-//        button3.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
-    }
     
     @objc func pressedButton(sender: Any) {
         let group = DispatchGroup()
@@ -126,7 +108,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             wp1 = "37.779119,-122.390310" //Oracle Park
             wp2 = "37.804459,-122.4487209" //Palace of Fine Arts
         }
-        
             fetchRisk(wp1, wp2)
             { riskMap, error in
                     //print(self.convertRawRiskMapToRouted(riskMap!).routePoints)
@@ -178,16 +159,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         // Do any additional setup after loading the view.
         setupMap()
-        setupButtons()
+        
         whereToLabel.layer.masksToBounds = true
         whereToLabel.layer.cornerRadius = 10
         
-    
-        
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         bottomView.layer.cornerRadius = 25
-        //DispatchQueue.main.async {
-        //}
+
     }
     
     func setupMap() {

@@ -130,6 +130,9 @@ class SelectedView: UIViewController, MKMapViewDelegate {
         nextRouteButton.addTarget(self, action: #selector(nextRoute), for: .touchUpInside)
         previousRouteButton.addTarget(self, action: #selector(prevRoute), for: .touchUpInside)
         previousRouteButton.isEnabled = false
+        if mapWithRoutes.count == 1 {
+            nextRouteButton.isEnabled = false
+        }
     }
     
     @objc func nextRoute() {
