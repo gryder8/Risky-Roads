@@ -16,6 +16,13 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainRiskLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var incidentRiskLabel: UILabel!
+    @IBOutlet weak var slowdownsRiskLabel: UILabel!
+    @IBOutlet weak var speedRiskLabel: UILabel!
+    @IBOutlet weak var timeRiskLabel: UILabel!
+    @IBOutlet weak var weatherRiskLabel: UILabel!
+    
+    
     
     public var mapWithRoute: RoutedMap = RoutedMap() //starts as empty!
     
@@ -44,6 +51,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         mapView.delegate = self
         addCloseButton()
@@ -56,11 +64,37 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             createPolyLine(locations: mapWithRoute.routePoints)
             mainRiskLabel.layer.masksToBounds = true
             mainRiskLabel.layer.cornerRadius = 10
+            
+            let riskScore = mapWithRoute.riskScores.total
+            
+            updateRiskLabel(riskScore: riskScore)
+            updateRiskSubLabels(riskScores: mapWithRoute.riskScores)
+            
             bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             bottomView.layer.cornerRadius = 25
         }
 
         // Do any additional setup after loading the view.
+    }
+    
+    func updateRiskLabel(riskScore: Int) {
+        mainRiskLabel.text = String(riskScore)
+        
+        if (riskScore <= 40) {
+            mainRiskLabel.backgroundColor = .green
+        } else if (riskScore <= 70) {
+            mainRiskLabel.backgroundColor = .yellow
+        } else {
+            mainRiskLabel.backgroundColor = .red
+        }
+    }
+    
+    func updateRiskSubLabels(riskScores: Risk) {
+        incidentRiskLabel.text = String(riskScores.incidents)
+        slowdownsRiskLabel.text = String(riskScores.slowdown)
+        speedRiskLabel.text = String(riskScores.speed)
+        timeRiskLabel.text = String(riskScores.time)
+        weatherRiskLabel.text = String(riskScores.weather)
     }
     
     func createPolyLine(locations: [CLLocation]){
