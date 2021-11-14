@@ -16,6 +16,11 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainRiskLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var incidentRiskLabel: UILabel!
+    @IBOutlet weak var slowdownsRiskLabel: UILabel!
+    @IBOutlet weak var speedRiskLabel: UILabel!
+    @IBOutlet weak var timeRiskLabel: UILabel!
+    @IBOutlet weak var weatherRiskLabel: UILabel!
     @IBOutlet weak var previousRouteButton: UIButton!
     @IBOutlet weak var nextRouteButton: UIButton!
     
@@ -46,6 +51,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         mapView.delegate = self
         addCloseButton()
@@ -63,8 +69,28 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             bottomView.layer.cornerRadius = 25
             setupButtons()
         }
-
+            mainRiskLabel.text = String(mapWithRoutes[routeIndex].riskScores.total)
         // Do any additional setup after loading the view.
+    }
+    
+    func updateRiskLabel(riskScore: Int) {
+        mainRiskLabel.text = String(riskScore)
+        
+        if (riskScore <= 40) {
+            mainRiskLabel.backgroundColor = .green
+        } else if (riskScore <= 70) {
+            mainRiskLabel.backgroundColor = .yellow
+        } else {
+            mainRiskLabel.backgroundColor = .red
+        }
+    }
+    
+    func updateRiskSubLabels(riskScores: Risk) {
+        incidentRiskLabel.text = String(riskScores.incidents)
+        slowdownsRiskLabel.text = String(riskScores.slowdown)
+        speedRiskLabel.text = String(riskScores.speed)
+        timeRiskLabel.text = String(riskScores.time)
+        weatherRiskLabel.text = String(riskScores.weather)
     }
     
     func createPolyLine(locations: [CLLocation]){
