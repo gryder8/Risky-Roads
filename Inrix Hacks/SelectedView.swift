@@ -16,6 +16,8 @@ class SelectedView: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainRiskLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var previousRouteButton: UIButton!
+    @IBOutlet weak var nextRouteButton: UIButton!
     
     public var mapWithRoute: RoutedMap = RoutedMap() //starts as empty!
     
@@ -56,6 +58,7 @@ class SelectedView: UIViewController, MKMapViewDelegate {
             createPolyLine(locations: mapWithRoute.routePoints)
             mainRiskLabel.layer.masksToBounds = true
             mainRiskLabel.layer.cornerRadius = 10
+            mainRiskLabel.text = String(mapWithRoute.riskScores.total)
             bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             bottomView.layer.cornerRadius = 25
         }
