@@ -13,7 +13,6 @@
 		86548BA427404CD3002A8D57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86548BA227404CD3002A8D57 /* Main.storyboard */; };
 		86548BA627404CD5002A8D57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86548BA527404CD5002A8D57 /* Assets.xcassets */; };
 		86548BA927404CD5002A8D57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86548BA727404CD5002A8D57 /* LaunchScreen.storyboard */; };
-		86548BB727406E9D002A8D57 /* DynamicBottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 86548BB627406E9D002A8D57 /* DynamicBottomSheet */; };
 		86548BB927408242002A8D57 /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86548BB827408242002A8D57 /* SelectedView.swift */; };
 		86548BBB274088AA002A8D57 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86548BBA274088AA002A8D57 /* Toast.swift */; };
 		86548BBD27408952002A8D57 /* RoutedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86548BBC27408952002A8D57 /* RoutedMap.swift */; };
@@ -40,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86548BB727406E9D002A8D57 /* DynamicBottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +96,6 @@
 			);
 			name = "Inrix Hacks";
 			packageProductDependencies = (
-				86548BB627406E9D002A8D57 /* DynamicBottomSheet */,
 			);
 			productName = "Inrix Hacks";
 			productReference = 86548B9927404CD3002A8D57 /* Inrix Hacks.app */;
@@ -129,7 +126,6 @@
 			);
 			mainGroup = 86548B9027404CD3002A8D57;
 			packageReferences = (
-				86548BB527406E9D002A8D57 /* XCRemoteSwiftPackageReference "DynamicBottomSheet" */,
 			);
 			productRefGroup = 86548B9A27404CD3002A8D57 /* Products */;
 			projectDirPath = "";
@@ -384,25 +380,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		86548BB527406E9D002A8D57 /* XCRemoteSwiftPackageReference "DynamicBottomSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Witi-Official/DynamicBottomSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		86548BB627406E9D002A8D57 /* DynamicBottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 86548BB527406E9D002A8D57 /* XCRemoteSwiftPackageReference "DynamicBottomSheet" */;
-			productName = DynamicBottomSheet;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86548B9127404CD3002A8D57 /* Project object */;
 }
